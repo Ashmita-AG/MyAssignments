@@ -3,13 +3,17 @@ package week2.day1.assignment;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.Select;
 
 public class Edit {
 public static void main(String[] args) {
 	//1. Launch URL "http://leaftaps.com/opentaps/control/login"
-	ChromeDriver driver= new ChromeDriver();
-	driver.get("http://leaftaps.com/opentaps/control/login");
+	ChromeOptions options = new ChromeOptions();
+	options.addArguments("--remote-allow-origins=*");
+	options.addArguments("--disable-notifications");
+	ChromeDriver driver = new ChromeDriver(options);
+	driver.get("http://leaftaps.com/opentaps/control/login"); 
 	driver.manage().window().maximize();
 	//2. Enter UserName and Password Using Id Locator
 	driver.findElement(By.id("username")).sendKeys("Demosalesmanager");

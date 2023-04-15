@@ -3,15 +3,18 @@ package week2.day1.assignment;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.Select;
 
 public class Duplicate {
 
 	public static void main(String[] args) {
 		//1. Launch URL "http://leaftaps.com/opentaps/control/login"
-		ChromeDriver driver = new ChromeDriver();
+		ChromeOptions options = new ChromeOptions();
+		options.addArguments("--remote-allow-origins=*");
+		ChromeDriver driver = new ChromeDriver(options);
 		driver.get("http://leaftaps.com/opentaps/control/login");
-		driver.manage().window().maximize();
+		driver.manage().window().maximize(); 
 		//2. Enter UserName and Password Using Id Locator
 		driver.findElement(By.id("username")).sendKeys("Demosalesmanager");
 		driver.findElement(By.id("password")).sendKeys("crmsfa");
@@ -57,8 +60,8 @@ public class Duplicate {
 		//20.Click on Create Lead Button
         driver.findElement(By.className("smallSubmit")).click();
 		//21. Get the Title of Resulting Page(refer the video)  using driver.getTitle()
-        //String title = driver.getTitle();
-		//System.out.println("Title of the page is : " + title);
+        String title1 = driver.getTitle();
+		System.out.println("Title of the page is : " + title1);
 		
 
 	}
